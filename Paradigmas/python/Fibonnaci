@@ -1,0 +1,19 @@
+import time
+
+
+def fibonacci(n: int) -> int:
+  if n <= 1:
+      return n
+  return fibonacci(n-1) + fibonacci(n-2)
+
+
+def test_fibonacci_performance():
+  n = 40
+  start_time = time.time()
+  result = fibonacci(n)
+  end_time = time.time()
+  print(f"Fibonacci of {n}: {result}")
+  print(f"Time taken: {end_time - start_time:.6f} seconds")
+
+
+test_fibonacci_performance()

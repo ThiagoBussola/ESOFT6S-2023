@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  nest-app:
+    container_name: nest-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - app-network
+    ports:
+      - 3001:3001
+    restart: unless-stopped
+    depends_on:
+      - mongo-base
+
+  mongo-base:
+    image: mongo:5.0.0
+    container_name: mongo-app
+    networks:
+      - app-network
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+  
+  
+networks:
+  app-network:
